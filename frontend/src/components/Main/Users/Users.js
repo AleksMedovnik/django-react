@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 
-const Main = () => {
-    const [data, newData] = useState([]);
+const Users = (props) => {
      useEffect(() => {
-        if (data.length === 0){
+        if (props.users.length === 0){
             fetch("api/user")
                 .then(response => response.json())
-                .then(data => newData(data))
+                .then(users => props.getUsers(users))
         }
      }, []);
 
-     const users = data.map(user => {
+     const users = props.users.map(user => {
             return (
                 <li key={user.id} id={user.id}>
                     <h3>{user.name}</h3>
@@ -29,4 +28,4 @@ const Main = () => {
     )
 }
 
-export default Main;
+export default Users;
