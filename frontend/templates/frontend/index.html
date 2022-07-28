@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
+
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src='{% static "frontend/main.js" %}' defer></script>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+  <script src='{% static "frontend/main.js" %}'
+    defer></script>
+  <link rel="stylesheet"
+    href="{% static 'frontend/css/style.css' %}">
   <title>Turn Mood</title>
 </head>
+
 <body>
   <div id="app"></div>
 </body>
+
 </html>

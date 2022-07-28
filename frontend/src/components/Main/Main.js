@@ -9,6 +9,7 @@ const Main = () => {
         <div className='main'>
             <Routes>
                 <Route path="/" element={<UsersHOC />} />
+                <Route path="/users" element={<UsersHOC />} />
             </Routes>
         </div>
     )
