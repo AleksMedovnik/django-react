@@ -4,8 +4,11 @@ const Post = props => {
     return (
         <div className='post'>
             <p className='post__message'>{props.post}</p>
-            <button
+{/*             <button
                 onClick={() => props.deletePost(props.id)}
+                type='button'
+                className='btn btn-del'>Delete</button> */}
+            <button
                 type='button'
                 className='btn btn-del'>Delete</button>
         </div>

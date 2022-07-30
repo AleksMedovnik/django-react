@@ -236,4 +236,49 @@ img {
   color: #f09090;
 }
 
+.user {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 2fr 8fr 2fr;
+  align-items: center;
+  gap: 15px;
+}
+
+.user .user__image {
+  width: 90px;
+}
+
+.user .user__status {
+  font-size: 1rem;
+  color: #ee9b9b;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.profile .profile__image {
+  width: 200px;
+}
+
+.profile .profile__name {
+  font-size: 1.4rem;
+}
+
+.profile .profile__status {
+  font-size: 0.9rem;
+  color: #ee9b9b;
+}
+
+.post {
+  margin-bottom: 20px;
+}
+
+.post .post__message {
+  margin-bottom: 10px;
+}
+
 /*# sourceMappingURL=../css/style.css.map */
