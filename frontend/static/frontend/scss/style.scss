@@ -1,0 +1,257 @@
+$fontURL: "../fonts/neucha-v12-latin-regular.";
+$bgBody: rgb(0, 0, 10);
+$logoLight: rgb(44, 235, 6);
+$logoDark: rgb(21, 21, 49);
+$bgContent: linear-gradient(0deg, rgb(96, 96, 196), rgb(8, 8, 102));
+$bgProfile: linear-gradient(0deg, rgb(8, 8, 102), rgb(171, 152, 196));
+$bgShadow: 5px 5px 7px -2px rgb(182, 230, 120);
+$linkColor: rgb(163, 134, 134);
+$activelinkColor: rgb(240, 144, 144);
+$btnWidth: 100px;
+$btnHeight: 20px;
+$btnRed: #ff15ff;
+$btnWhite: rgb(226, 213, 213);
+
+@mixin d-flex() {
+    display: flex;
+}
+
+@mixin wrap() {
+    @include d-flex();
+    justify-content: center;
+    align-items: center;
+}
+
+@font-face {
+    font-family: "Neucha";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Neucha"), url($fontURL + "eot?#iefix") format("embedded-opentype"),
+        url($fontURL + "woff2") format("woff2"), url($fontURL + "woff") format("woff"),
+        url($fontURL + "ttf") format("truetype"), url($fontURL + "svg#Neucha") format("svg");
+}
+
+html {
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Neucha;
+    font-size: 1.2rem;
+    background: $bgBody;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 100%;
+}
+
+.btn {
+    width: $btnWidth;
+    height: $btnHeight;
+    border-radius: 3px;
+    border: 1px solid gray;
+    background-position-x: left;
+    background-size: $btnWidth * 2 $btnHeight;
+    background-repeat: no-repeat;
+    transition: .3s;
+}
+
+.btn:hover{
+    background-position-x: -100px;
+}
+
+.btn-del {
+    background-image: linear-gradient(135deg, $btnRed 50%, $btnWhite 50%);
+    color: $btnWhite;
+}
+
+.btn-del:hover{
+    color: $btnRed;
+}
+
+.btn-send {
+    background-image: linear-gradient(135deg, $logoLight 50%, $btnWhite 50%);
+    color: $logoDark;
+}
+
+.btn-send:hover{
+    color: rgb(8, 8, 102);
+}
+
+.App {
+    @include wrap();
+    color: wheat;
+
+    a,
+    input,
+    input::placeholder {
+        color: inherit;
+    }
+}
+
+.container {
+    max-width: 900px;
+    width: 95%;
+    min-height: 110vh;
+    display: grid;
+    grid-template-areas: "h h" "n m";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 10px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hover-link {
+    transition: 0.3s;
+}
+
+.hover-link:hover {
+    transform: translateX(5px);
+}
+
+.main,
+.nav,
+.header {
+    background: $bgContent;
+    box-shadow: $bgShadow;
+    border-radius: 10px;
+}
+.header,
+.nav {
+    position: sticky;
+}
+.header {
+    grid-area: h;
+    top: 0;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2;
+
+    .header__img {
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+    }
+
+    .header__profile {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 12px;
+        padding: 5px;
+        border-radius: 25px;
+        transition: 0.5s;
+    }
+
+    .header__profile:hover {
+        cursor: pointer;
+        background: rgb(163, 134, 134);
+    }
+}
+
+.bg-profile {
+    background: $bgProfile;
+}
+
+.logo {
+    display: flex;
+    align-items: baseline;
+
+    .logo__link {
+        font-size: 1.5rem;
+        color: rgb(21, 21, 49);
+        text-shadow: 1px 1px rgb(182, 230, 120);
+        animation: h_head 2s infinite;
+    }
+}
+
+@keyframes h_head {
+    5% {
+        color: $logoLight;
+    }
+    10% {
+        color: $logoDark;
+    }
+    15% {
+        color: $logoLight;
+    }
+    20% {
+        color: $logoDark;
+    }
+    100% {
+        color: $logoDark;
+    }
+}
+
+.form-search {
+    border-radius: 10px;
+    height: 30px;
+    display: flex;
+
+    .form-search__search {
+        width: 250px;
+        text-align: center;
+        border: none;
+        background: transparent;
+    }
+}
+
+.shop {
+    position: relative;
+    text-transform: uppercase;
+    text-shadow: 2px 2px $logoLight;
+}
+.shop::before {
+    position: absolute;
+    top: -5px;
+    left: -40px;
+    content: "";
+    border: 50px solid transparent;
+    border-top: 50px solid rgb(8, 8, 102);
+    z-index: -1;
+    transform: rotate(15deg);
+}
+
+.main {
+    grid-area: m;
+    padding: 20px;
+}
+
+.nav {
+    top: 0px;
+    grid-area: n;
+    max-height: 110vh;
+    padding: 115px 30px 0;
+    z-index: 1;
+
+    li {
+        margin-bottom: 10px;
+
+        a {
+            color: $linkColor;
+            transition: 0.3s;
+        }
+        a.active,
+        a:hover {
+            color: $activelinkColor;
+        }
+    }
+}
