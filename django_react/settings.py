@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'rest_framework',
     'frontend',
+    'django_sass',
 ]
 
 MIDDLEWARE = [
