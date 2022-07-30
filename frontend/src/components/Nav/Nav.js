@@ -8,7 +8,6 @@ const Nav = () => {
             <ul className="nav__menu">
                 <li className='hover-link'><NavLink to='/users'>Users</NavLink></li>
                 <li className='hover-link'><NavLink to='/profile'>Profile</NavLink></li>
-                <li className='hover-link'><NavLink to='/chat'>Chat</NavLink></li>
             </ul>
         </nav>
     );
