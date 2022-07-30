@@ -6,4 +6,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
     path('', include('frontend.urls')),
+    path('posts/', include('posts.urls')),
 ]
