@@ -7,12 +7,10 @@ const UserProfile = props => {
     let params = useParams()
     useEffect(() => {
         if (props.posts.length === 0) {
-            /*             axios.get('https://jsonplaceholder.typicode.com/posts')
-                            .then(response => props.getPosts(response.data)); */
-            fetch("posts/api/post/")
-                .then(response => response.json())
-                .then(posts => props.getPosts(posts))
+            axios.get('posts/api/post/')
+                .then(posts => props.getPosts(posts.data));
         }
+        
         // getUserName()
     }, []);
 

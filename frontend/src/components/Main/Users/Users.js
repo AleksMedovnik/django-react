@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
+import axios from 'axios';
 
 
 const Users = (props) => {
     useEffect(() => {
         if (props.users.length === 0) {
-            fetch("api/user")
-                .then(response => response.json())
-                .then(users => props.getUsers(users))
+            axios.get('api/user')
+                .then(users => props.getUsers(users.data));
         }
     }, []);
 
