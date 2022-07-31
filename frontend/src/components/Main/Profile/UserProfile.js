@@ -10,9 +10,14 @@ const UserProfile = props => {
             axios.get('posts/api/post/')
                 .then(posts => props.getPosts(posts.data));
         }
-        
+
         // getUserName()
     }, []);
+
+    const newPostChange = (e) => {
+        let text = e.target.value;
+        props.updateNewPostText(text);
+    }
 
     /*   const getUserName = () => {
           let id = params.id;
@@ -22,11 +27,6 @@ const UserProfile = props => {
           } else {
               props.updateUserName(props.myName)
           }
-      }
-  
-      const newPostChange = (e) => {
-          let text = e.target.value;
-          props.updateNewPostText(text);
       }
   
       const addPost = () => {
@@ -69,11 +69,12 @@ const UserProfile = props => {
                 </div>
             </div>
             <div className='profile__newPost'>
-                {/*                 <textarea value={props.newPostText}
+                {/*                 
+                <button onClick={addPost} className='btn btn-send'>Add Post</button> */}
+                
+                <textarea value={props.newPostText}
                     onChange={newPostChange}
                     name="post" />
-                <button onClick={addPost} className='btn btn-send'>Add Post</button> */}
-                <textarea name="post" />
                 <button className='btn btn-send'>Add Post</button>
             </div>
             <div className='profile__wall'>
