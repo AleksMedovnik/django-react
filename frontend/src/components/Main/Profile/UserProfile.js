@@ -20,20 +20,17 @@ const UserProfile = props => {
     }
 
     const addPost = () => {
-          axios.post('posts/api/post/', {
-              body: JSON.stringify({
-                  title: props.newPostText,
-                  slug: props.posts[props.posts.length - 1].id + 1,
-                  body: props.newPostText,
-                  id: props.posts[props.posts.length - 1].id + 1,
-              }),
-              headers: {
-                  'Content-type': 'application/json; charset=UTF-8',
-              },
-          })
-            .then((response) => JSON.parse(response.data.body))
-            .then((post) => props.addPost(post));
-    };
+         axios({
+           method: 'post',
+           url: 'posts/api/post/',
+           data: {
+                 title: props.newPostText,
+                 body: props.newPostText,
+             }
+         })
+            .then((post) => props.addPost(post.data));
+   };
+
 
     /*   const getUserName = () => {
           let id = params.id;
@@ -74,8 +71,7 @@ const UserProfile = props => {
                 <textarea value={props.newPostText}
                     onChange={newPostChange}
                     name="post" />
-            {/* <button onClick={addPost} className='btn btn-send'>Add Post</button> */}
-                  <button className='btn btn-send'>Add Post</button>
+             <button onClick={addPost} className='btn btn-send'>Add Post</button>
             </div>
             <div className='profile__wall'>
                 {posts}
