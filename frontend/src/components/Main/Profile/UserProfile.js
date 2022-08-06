@@ -31,6 +31,11 @@ const UserProfile = props => {
             .then((post) => props.addPost(post.data));
    };
 
+   const deletePost = (id) => {
+          axios.delete(`posts/api/post/${id}`)
+              .then(() => props.deletePost(id));
+   }
+
 
     /*   const getUserName = () => {
           let id = params.id;
@@ -42,16 +47,12 @@ const UserProfile = props => {
           }
       }
   
-      const deletePost = (id) => {
-          axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
-              .then(() => props.deletePost(id));
-      } */
+       */
 
     const posts = props.posts.map(post => {
         const body = post.body[0].toUpperCase() + post.body.slice(1)
         return (
-            // <Post deletePost={deletePost} post={body} key={post.id} id={post.id} />
-            <Post post={body} key={post.id} id={post.id} />
+             <Post deletePost={deletePost} post={body} key={post.id} id={post.id} />
         )
     })
         .reverse();
@@ -66,12 +67,10 @@ const UserProfile = props => {
                 </div>
             </div>
             <div className='profile__newPost'>
-
-                
                 <textarea value={props.newPostText}
                     onChange={newPostChange}
                     name="post" />
-             <button onClick={addPost} className='btn btn-send'>Add Post</button>
+                <button onClick={addPost} className='btn btn-send'>Add Post</button>
             </div>
             <div className='profile__wall'>
                 {posts}
