@@ -20,21 +20,22 @@ const UserProfile = props => {
     }
 
     const addPost = () => {
-         axios({
-           method: 'post',
-           url: 'posts/api/post/',
-           data: {
-                 title: props.newPostText,
-                 body: props.newPostText,
-             }
-         })
+        if (props.newPostText == 0) return
+        axios({
+            method: 'post',
+            url: 'posts/api/post/',
+            data: {
+                title: props.newPostText,
+                body: props.newPostText,
+            }
+        })
             .then((post) => props.addPost(post.data));
-   };
+    };
 
-   const deletePost = (id) => {
-          axios.delete(`posts/api/post/${id}`)
-              .then(() => props.deletePost(id));
-   }
+    const deletePost = (id) => {
+        axios.delete(`posts/api/post/${id}`)
+            .then(() => props.deletePost(id));
+    }
 
 
     /*   const getUserName = () => {
@@ -52,7 +53,7 @@ const UserProfile = props => {
     const posts = props.posts.map(post => {
         const body = post.body[0].toUpperCase() + post.body.slice(1)
         return (
-             <Post deletePost={deletePost} post={body} key={post.id} id={post.id} />
+            <Post deletePost={deletePost} post={body} key={post.id} id={post.id} />
         )
     })
         .reverse();
