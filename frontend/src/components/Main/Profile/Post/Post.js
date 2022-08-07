@@ -3,7 +3,8 @@ import React from "react";
 const Post = props => {
     return (
         <div className='post'>
-            <p className='post__message'>{props.post}</p>
+            <h4>{props.post_title}</h4>
+            <p className='post__message'>{props.post_body}</p>
             <button
                 onClick={() => props.deletePost(props.id)}
                 type='button'

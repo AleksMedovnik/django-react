@@ -19,13 +19,18 @@ const UserProfile = props => {
         props.updateNewPostText(text);
     }
 
+    const newPostTitle = (e) => {
+        let text = e.target.value;
+        props.updateNewPostTitle(text);
+    }
+
     const addPost = () => {
         if (props.newPostText == 0) return
         axios({
             method: 'post',
             url: 'posts/api/post/',
             data: {
-                title: props.newPostText,
+                title: props.newPostTitle,
                 body: props.newPostText,
             }
         })
@@ -53,7 +58,7 @@ const UserProfile = props => {
     const posts = props.posts.map(post => {
         const body = post.body[0].toUpperCase() + post.body.slice(1)
         return (
-            <Post deletePost={deletePost} post={body} key={post.id} id={post.id} />
+            <Post deletePost={deletePost} post_title={post.title} post_body={body} key={post.id} id={post.id} />
         )
     })
         .reverse();
@@ -68,6 +73,9 @@ const UserProfile = props => {
                 </div>
             </div>
             <div className='profile__newPost'>
+                <textarea value={props.newPostTitle}
+                    onChange={newPostTitle}
+                    name="post_title" />
                 <textarea value={props.newPostText}
                     onChange={newPostChange}
                     name="post" />
