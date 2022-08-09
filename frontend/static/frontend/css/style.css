@@ -30,6 +30,11 @@ img {
   border-radius: 100%;
 }
 
+textarea {
+  resize: none;
+  padding: 5px;
+}
+
 .btn {
   width: 100px;
   height: 20px;
@@ -70,9 +75,7 @@ img {
   color: wheat;
 }
 
-.App a,
-.App input,
-.App input::placeholder {
+.App a {
   color: inherit;
 }
 
@@ -271,6 +274,15 @@ img {
 .profile .profile__status {
   font-size: 0.9rem;
   color: #ee9b9b;
+}
+
+.profile__post-title {
+  height: 35px;
+}
+
+.profile__post-body,
+.profile__post-title {
+  width: 150px;
 }
 
 .post {
