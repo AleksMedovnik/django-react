@@ -10,8 +10,8 @@ const Main = () => {
         <div className='main'>
             <Routes>
                 <Route path="/" element={<UsersHOC />} />
-                <Route path="/users" element={<UsersHOC />} />
-                <Route path="/profile" element={<ProfileHOC />} />
+                <Route path="users" element={<UsersHOC />} />
+                <Route path="profile/*" element={<ProfileHOC />} />
             </Routes>
         </div>
     )

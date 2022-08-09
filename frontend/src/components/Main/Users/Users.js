@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import axios from 'axios';
+import { NavLink } from "react-router-dom";
 
 
 const Users = (props) => {
@@ -13,10 +14,12 @@ const Users = (props) => {
     const users = props.users.map(user => {
         return (
             <li key={user.id} id={user.id}>
-                <h3>{user.name}</h3>
-                <p>Возраст: {user.age}</p>
-                <p>Страна: {user.country}</p>
-                <p>Компания: {user.company}</p>
+                <NavLink to={`/profile/${user.id}`}>
+                    <h3>{user.name}</h3>
+                    <p>Возраст: {user.age}</p>
+                    <p>Страна: {user.country}</p>
+                    <p>Компания: {user.company}</p>
+                </NavLink>
             </li>
         )
     })

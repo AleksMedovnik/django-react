@@ -5,14 +5,13 @@ import {
     addPost,
     updateNewPostText,
     deletePost,
-    updateUserName,
+    updateUserProfile,
     updateNewPostTitle
 } from '../../../store/reducers/profileReducer'
 
 const mapStateToProps = state => {
     return {
-        myName: state.profile.myName,
-        userName: state.profile.userName,
+        userProfile: state.profile.userProfile,
         newPostText: state.profile.newPostText,
         newPostTitle: state.profile.newPostTitle,
         posts: state.profile.posts,
@@ -21,5 +20,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { updateUserName, getPosts, addPost, updateNewPostText, updateNewPostTitle, deletePost }
+    { updateUserProfile, getPosts, addPost, updateNewPostText, updateNewPostTitle, deletePost }
 )(Profile);

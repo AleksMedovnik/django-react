@@ -10,8 +10,7 @@ const UserProfile = props => {
             axios.get('posts/api/post/')
                 .then(posts => props.getPosts(posts.data));
         }
-
-        // getUserName()
+        getUserProfile()
     }, []);
 
     const newPostChange = (e) => {
@@ -43,17 +42,18 @@ const UserProfile = props => {
     }
 
 
-    /*   const getUserName = () => {
-          let id = params.id;
-          if(id){
-              axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-              .then(response => props.updateUserName(response.data.name));
-          } else {
-              props.updateUserName(props.myName)
-          }
-      }
-  
-       */
+    const getUserProfile = () => {
+        let id = params.id;
+        if (id) {
+            axios.get(`api/user/${id}`)
+                // .then(profile => props.updateUserProfile(profile.data));
+                .then(profile => console.log(profile));
+        } else {
+            props.updateUserProfile(props.userProfile)
+        }
+    }
+
+
 
     const posts = props.posts.map(post => {
         const body = post.body[0].toUpperCase() + post.body.slice(1)
@@ -69,7 +69,10 @@ const UserProfile = props => {
                     <img src='' alt={props.userName} className='profile__image' />
                 </div>
                 <div>
-                    <span className='profile__name'>{props.userName}</span>
+                    <h3>{props.userProfile.name}</h3>
+                    <p>Возраст: {props.userProfile.age}</p>
+                    <p>Страна: {props.userProfile.country}</p>
+                    <p>Компания: {props.userProfile.company}</p>
                 </div>
             </div>
             <div className='profile__newPost'>
