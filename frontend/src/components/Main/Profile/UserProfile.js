@@ -7,7 +7,7 @@ const UserProfile = props => {
     let params = useParams()
     useEffect(() => {
         if (props.posts.length === 0) {
-            axios.get('posts/api/post/')
+            axios.get('/posts/api/post/')
                 .then(posts => props.getPosts(posts.data));
         }
         getUserProfile()
@@ -45,9 +45,8 @@ const UserProfile = props => {
     const getUserProfile = () => {
         let id = params.id;
         if (id) {
-            axios.get(`api/user/${id}`)
-                // .then(profile => props.updateUserProfile(profile.data));
-                .then(profile => console.log(profile));
+            axios.get(`/api/user/${id}`)
+                .then(profile => props.updateUserProfile(profile.data));
         } else {
             props.updateUserProfile(props.userProfile)
         }
