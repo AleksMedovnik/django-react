@@ -76,9 +76,11 @@ const UserProfile = props => {
                 <textarea value={props.newPostTitle}
                     onChange={newPostTitle}
                     name="post_title" />
+                <br></br>
                 <textarea value={props.newPostText}
                     onChange={newPostChange}
                     name="post" />
+                <br></br>
                 <button onClick={addPost} className='btn btn-send'>Add Post</button>
             </div>
             <div className='profile__wall'>
