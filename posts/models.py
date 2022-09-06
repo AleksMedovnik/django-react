@@ -7,7 +7,7 @@ class Post(models.Model):
     # image = models.ImageField()
 
     class Meta:
-        ordering = ['-date_pub', ]
+        ordering = ['-pk', ]
 
 
     def __str__(self):
